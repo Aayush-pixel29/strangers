@@ -1,142 +1,911 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fragments of Us - Shahin</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,500&family=Caveat:wght@500;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Gresshma</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,500&family=Caveat:wght@500;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  :root{
+    --cream:#FFFBF2;
+    --butter:#FFD166;
+    --sky:#5FA8D3;
+    --blush:#FF8FA8;
+    --sunset:#FF8C42;
+    --ink:#3A3238;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Outfit',sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    overflow-x:hidden;
+  }
+  h1,h2{font-family:'Fraunces',serif;}
+  .handwritten{font-family:'Caveat',cursive;}
+
+  /* ---------- shared section styling ---------- */
+  section{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:6vh 6vw;
+    position:relative;
+  }
+
+  /* ---------- HERO ---------- */
+  #hero{
+    background:linear-gradient(160deg,var(--cream) 0%, #FFF3D6 45%, #FFE3E9 100%);
+  }
+  .note{
+    width:min(420px,85vw);
+    background:#FFFDF7;
+    border-radius:2px;
+    box-shadow:0 18px 40px rgba(58,50,56,0.18);
+    padding:40px 30px;
+    position:relative;
+    transform:rotate(-2deg);
+    clip-path:polygon(0% 2%,3% 0%,97% 1%,100% 3%,99% 97%,96% 100%,2% 99%,0% 96%);
+  }
+  .note::after{
+    content:"";
+    position:absolute;
+    top:-14px; left:50%;
+    width:70px; height:26px;
+    background:rgba(255,209,102,0.55);
+    transform:translateX(-50%) rotate(-3deg);
+  }
+  .note h1{font-size:clamp(1.8rem,5vw,2.6rem); line-height:1.15; margin-bottom:14px;}
+  .note p{font-size:1.05rem; opacity:.85;}
+  .fold-hint{margin-top:26px; font-size:1.3rem; color:var(--sunset);}
+  .scroll-cue{margin-top:50px; font-size:.85rem; letter-spacing:.08em; text-transform:uppercase; opacity:.5; animation:bob 2s ease-in-out infinite;}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+
+  /* ---------- ORIGIN ---------- */
+  #origin{background:linear-gradient(160deg,#FFE3E9 0%, var(--cream) 100%);}
+  .origin-card{max-width:640px;}
+  .origin-card .eyebrow{font-family:'Caveat',cursive; font-size:1.6rem; color:var(--sky); display:block; margin-bottom:6px;}
+  .origin-card h2{font-size:clamp(1.6rem,4vw,2.3rem); margin-bottom:22px;}
+  .origin-card p{font-size:1.08rem; line-height:1.7; margin-bottom:16px; opacity:.88;}
+  .torn-strip{width:120px; height:4px; background:var(--butter); margin:28px auto 0; border-radius:2px;}
+
+  /* ---------- CAKE / CANDLES ---------- */
+  #cake{
+    background:linear-gradient(160deg,var(--cream) 0%, #FFEFD6 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  #cake h2{margin-bottom:8px; z-index: 5; position: relative;}
+  #cake .sub{opacity:.7; margin-bottom:40px; font-size:1rem; z-index: 5; position: relative;}
+  
+  .cake-aura {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(255, 235, 180, 0.7) 0%, rgba(255, 255, 255, 0) 70%);
+    z-index: 0;
+    pointer-events: none;
+  }
+  
+  .cake-wrap{position:relative; z-index: 1;}
+  
+  .cake{width:260px; margin:0 auto; position: relative; z-index: 2;}
+  
+  .tier{
+    background:var(--blush); 
+    border-radius:12px; 
+    position:relative; 
+    margin:0 auto;
+    box-shadow: inset -5px -5px 15px rgba(0,0,0,0.1), 0 5px 15px rgba(0,0,0,0.08);
+  }
+  
+  .tier.bottom{
+    height:75px; 
+    width:260px; 
+    background: linear-gradient(180deg, var(--sunset) 0%, #e87b35 100%);
+    z-index: 2;
+  }
+  
+  .tier.top{
+    height:60px; 
+    width:190px; 
+    background: linear-gradient(180deg, var(--blush) 0%, #e87a96 100%);
+    z-index: 3;
+    margin-bottom: 0px; /* removed margin */
+  }
+
+  .icing {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background: #FFFDF7;
+    border-radius: 12px 12px 0 0;
+  }
+  .drip {
+    position: absolute;
+    top: 10px;
+    background: #FFFDF7;
+    width: 16px;
+    border-radius: 0 0 10px 10px;
+    box-shadow: inset -2px -2px 4px rgba(0,0,0,0.05);
+  }
+
+  .plate {
+    width: 300px;
+    height: 20px;
+    background: #fdfdfd;
+    border-radius: 50%;
+    margin: -10px auto 0;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.1), inset 0 -3px 5px rgba(0,0,0,0.05);
+    z-index: 1;
+    position: relative;
+  }
+  
+  .candles{display:flex; justify-content:center; gap:20px; margin-bottom:-10px; z-index: 5; position: relative;}
+  
+  .candle{
+    width:12px; 
+    height:45px; 
+    background:linear-gradient(90deg, #8ad2f5 0%, var(--sky) 100%); 
+    border-radius:4px; 
+    position:relative; 
+    cursor:pointer;
+    box-shadow: inset -3px -3px 6px rgba(0,0,0,0.1);
+  }
+  
+  .candle::before {
+    content:''; position:absolute; top: -5px; left: 50%; transform: translateX(-50%); width: 2px; height: 6px; background: #333;
+  }
+  
+  .flame{
+    position:absolute; top:-20px; left:50%; transform:translateX(-50%);
+    width:14px; height:20px; border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+    background:radial-gradient(circle at 50% 70%, #FFE07A, var(--sunset) 80%);
+    animation:flicker 1.4s ease-in-out infinite;
+    transition:opacity .3s, transform .3s;
+    box-shadow: 0 0 20px rgba(255,140,66,0.6);
+  }
+  
+  .candle.out .flame{opacity:0; transform:translateX(-50%) translateY(-10px) scale(.4);}
+  @keyframes flicker{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(.85) rotate(-3deg)}}
+  
+  .cake-caption{margin-top:28px; font-size:1.1rem; opacity:.6; font-family: 'Caveat', cursive;}
+  
+  /* Floating sparkles */
+  .sparkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #FFE07A;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #FFE07A, 0 0 20px #FFE07A;
+    animation: float-sparkle 3s infinite ease-in-out;
+    z-index: 4;
+  }
+  @keyframes float-sparkle {
+    0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
+    50% { transform: translateY(-30px) scale(1.5); opacity: 1; }
+  }
+
+  #confetti-canvas{position:fixed; inset:0; pointer-events:none; z-index:50;}
+  
+  /* GIFT BOX */
+  .gift-section { margin-top: 60px; padding-bottom: 20px; text-align: center; position: relative; z-index: 10; }
+  .gift-hint { font-family: 'Caveat', cursive; font-size: 1.5rem; color: var(--sunset); margin-bottom: 30px; opacity: 0.9; }
+  .gift-wrap { position: relative; width: 140px; height: 110px; margin: 0 auto; cursor: pointer; perspective: 1000px; -webkit-tap-highlight-color: transparent; }
+  .gift-box { position: absolute; bottom: 0; left: 0; width: 100%; height: 85px; background: var(--sky); border-radius: 4px; z-index: 3; box-shadow: inset 0 -10px 0 rgba(0,0,0,0.1); }
+  .gift-lid { position: absolute; top: 10px; left: -5px; width: 150px; height: 25px; background: #4a91b8; border-radius: 4px; z-index: 5; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s; box-shadow: 0 4px 6px rgba(0,0,0,0.2); }
+  .gift-bow { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); width: 44px; height: 12px; }
+  .gift-bow::before, .gift-bow::after { content: ''; position: absolute; top: 0; width: 22px; height: 15px; border-radius: 20px 20px 0 0; border: 4px solid var(--blush); border-bottom: none; }
+  .gift-bow::before { left: 0; transform: rotate(-15deg); }
+  .gift-bow::after { right: 0; transform: rotate(15deg); }
+  .gift-ribbon-v { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 20px; height: 100%; background: var(--blush); z-index: 4; }
+  .gift-ribbon-h { position: absolute; bottom: 35px; left: 0; width: 100%; height: 20px; background: var(--blush); z-index: 4; }
+  .gift-photo {
+    position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%) scale(0.3); transform-origin: bottom center;
+    width: 200px; padding: 12px 12px 40px 12px; background: #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    z-index: 2; opacity: 0; transition: transform 0.8s 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.8s 0.2s;
+  }
+  .photo-frame { width: 100%; aspect-ratio: 3/4; overflow: hidden; border-radius: 2px; }
+  .photo-frame img { width: 100%; height: 100%; object-fit: cover; }
+  .gift-photo-cap { position: absolute; bottom: 12px; left: 0; width: 100%; text-align: center; font-family: 'Caveat', cursive; font-size: 1.2rem; color: var(--ink); }
+  
+  .gift-wrap.opened .gift-lid { transform: translateY(-50px) rotate(15deg); opacity: 0; }
+  .gift-wrap.opened .gift-photo { transform: translateX(-50%) translateY(-150px) scale(1.15); opacity: 1; z-index: 20; }
+  
+  .wish-reveal{
+    margin-top:30px; width: 100%; max-width: 420px;
+    opacity:0; transform:translateY(10px); transition:opacity .6s, transform .6s; pointer-events: none;
+    display: none;
+  }
+  .wish-reveal.show{opacity:1; transform:translateY(0); pointer-events: auto;}
+  
+  /* Wish Form Styles */
+  .wish-form { background: #fff; padding: 25px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin: 0 auto; text-align: left; }
+  .wish-form label { font-family: 'Fraunces', serif; font-size: 1.2rem; color: var(--ink); margin-bottom: 10px; display: block; text-align: center; }
+  .wish-form textarea { width: 100%; padding: 15px; border: 2px solid #eee; border-radius: 8px; font-family: 'Outfit', sans-serif; font-size: 1rem; color: var(--ink); resize: none; outline: none; min-height: 80px; transition: border-color 0.3s; margin-bottom: 15px; }
+  .wish-form textarea:focus { border-color: var(--sky); }
+  .wish-btn { width: 100%; padding: 14px; background: var(--sunset); border: none; color: #fff; font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 600; border-radius: 50px; cursor: pointer; transition: transform 0.2s, background 0.2s; }
+  .wish-btn:hover { background: #e87b35; transform: scale(1.02); }
+  #final-msg { display: none; text-align: center; margin-top: 20px; font-family: 'Caveat', cursive; font-size: 1.6rem; color: var(--sunset); }
+
+  /* ---------- SCRAPBOOK ---------- */
+  #memories{background:linear-gradient(160deg,#FFEFD6 0%, #EAF3FB 100%); padding-top:10vh; padding-bottom:10vh;}
+  #memories h2{margin-bottom:6px;}
+  #memories .sub{opacity:.7; margin-bottom:50px;}
+  .board{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:34px; max-width:920px; width:100%; justify-content: center;
+  }
+  .polaroid{
+    background:#fff; padding:14px 14px 46px; box-shadow:0 14px 28px rgba(58,50,56,0.15);
+    cursor:pointer; perspective:1000px; position:relative; max-width: 280px; margin: 0 auto;
+  }
+  .polaroid:nth-child(odd){transform:rotate(-3deg);}
+  .polaroid:nth-child(even){transform:rotate(2.5deg);}
+  .polaroid::before{
+    content:"";
+    position:absolute; top:-10px; left:50%; transform:translateX(-50%) rotate(-4deg);
+    width:60px; height:20px; background:rgba(95,168,211,0.35);
+  }
+  .frame-inner{
+    width:100%; aspect-ratio:1/1; border-radius:2px;
+    background:linear-gradient(135deg,var(--butter),var(--blush));
+    display:flex; align-items:center; justify-content:center;
+    overflow: hidden;
+    transition:transform .6s;
+  }
+  .frame-inner img { width: 100%; height: 100%; object-fit: cover; filter: sepia(0.15) contrast(1.05); }
+  .polaroid.flipped .frame-inner{transform:rotateY(180deg);}
+  .polaroid-cap{font-family:'Caveat',cursive; font-size:1.2rem; text-align:center; margin-top:10px; opacity:.85;}
+  .back-note{
+    position:absolute; inset:14px 14px 46px; background:#FFFDF7;
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    padding:14px; font-family:'Caveat',cursive; font-size:1.15rem; opacity:0; transition:opacity .4s;
+    pointer-events:none;
+  }
+  .polaroid.flipped .back-note{opacity:1;}
+  .polaroid.flipped .frame-inner{opacity:0;}
+  .tap-hint{margin-top:36px; font-size:.85rem; opacity:.5;}
+
+  /* ---------- SONG ---------- */
+  #song{background:linear-gradient(160deg,#EAF3FB 0%, var(--cream) 100%);}
+  #song h2{margin-bottom:10px;}
+  #song .sub{opacity:.7; margin-bottom:34px; max-width:480px; font-size:1rem;}
+  
+  /* Custom Audio Player Styles */
+  .player-container { width:100%; max-width:600px; background:rgba(255,255,255,0.8); border-radius:14px; padding:25px; box-shadow:0 14px 30px rgba(58,50,56,0.15); backdrop-filter: blur(10px); }
+  .song-list { display: flex; flex-direction: column; gap: 15px; }
+  .song-item { display: flex; align-items: center; gap: 15px; padding: 15px; background: #fff; border-radius: 10px; transition: all 0.3s; cursor: pointer; border: 1px solid #eee; text-align: left; }
+  .song-item:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+  .song-item.active { border-color: var(--sky); background: #f4f9fc; }
+  .play-btn { width: 45px; height: 45px; border-radius: 50%; background: var(--sky); border: none; color: #fff; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.3s; }
+  .song-item:hover .play-btn { background: #4a91b8; }
+  .song-details { flex: 1; }
+  .song-title { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+  .song-artist { font-size: 0.85rem; color: #666; text-transform: uppercase; letter-spacing: 0.5px; }
+  .song-dedication { font-family: 'Caveat', cursive; font-size: 1.2rem; color: #555; margin-top: 8px; line-height: 1.2; }
+  .progress-bar-container { width: 100%; height: 6px; background: #eee; border-radius: 3px; margin-top: 10px; overflow: hidden; position: relative; }
+  .progress-fill { height: 100%; background: var(--sky); width: 0%; transition: width 0.1s linear; }
+  .limit-text { font-size: 0.75rem; color: #888; text-align: right; margin-top: 5px; }
+
+
+  /* ---------- ENVELOPE REDESIGN ---------- */
+  #envelope-section{background:linear-gradient(160deg,var(--cream) 0%, #FFE3E9 60%, #FFEFD6 100%); min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10vh 20px;}
+  #envelope-section h2{margin-bottom:10px;}
+  #envelope-section .sub{opacity:.7; margin-bottom:50px; font-size:1rem;}
+  
+  .env-wrapper {
+    position: relative;
+    width: min(90vw, 450px);
+    height: min(60vw, 300px);
+    cursor: pointer;
+    perspective: 2000px;
+    margin-bottom: 50px;
+  }
+  
+  .envelope {
+    position: absolute;
+    inset: 0;
+    background: #e0d0b6;
+    border-radius: 4px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    z-index: 10;
+    transition: opacity 1s 0.3s, transform 1s 0.3s;
+  }
+  
+  .env-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background: #d8c3a5;
+    clip-path: polygon(0 0, 50% 100%, 100% 0);
+    transform-origin: top;
+    transition: transform 0.6s ease-in-out, z-index 0.6s;
+    z-index: 4;
+  }
+  
+  .env-front {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #e8dbce;
+    clip-path: polygon(0 100%, 50% 40%, 100% 100%, 100% 100%, 0 100%);
+    z-index: 3;
+  }
+  .env-front::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f0e6da;
+    clip-path: polygon(0 0, 0 100%, 50% 40%);
+    z-index: 3;
+  }
+  .env-front::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: #ece0d1;
+    clip-path: polygon(100% 0, 100% 100%, 50% 40%);
+    z-index: 3;
+  }
+
+  .seal {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 45px;
+    height: 45px;
+    background: #a42c20;
+    border-radius: 50%;
+    z-index: 5;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    transition: opacity 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffd700;
+    font-size: 1.2rem;
+  }
+
+  /* The 3D Letter Container */
+  .letter-container {
+    position: absolute;
+    bottom: 5px;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    z-index: 2;
+    transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), width 1.2s, height 1.2s, left 1.2s, bottom 1.2s;
+    perspective: 1500px;
+  }
+
+  .letter-flipper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .letter-flipper.flipped {
+    transform: rotateY(180deg);
+  }
+
+  .letter-front, .letter-back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  .letter-front { background: #FFFDF7; }
+  .letter-back {
+    background: #fff;
+    background-image: repeating-linear-gradient(transparent, transparent 31px, #e1f0fa 32px);
+    transform: rotateY(180deg);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  .letter-content {
+    opacity: 0;
+    transition: opacity 1s 0.8s;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--ink);
+    height: 100%;
+    overflow-y: auto;
+    padding-right: 10px;
+  }
+  .letter-content p { margin-bottom: 15px; }
+  
+  /* When Envelope is Opened */
+  .env-wrapper.open .env-flap {
+    transform: rotateX(180deg);
+    z-index: 1;
+  }
+  .env-wrapper.open .seal { opacity: 0; }
+  
+  .env-wrapper.open .envelope {
+    transform: translateY(30px) scale(0.95);
+    opacity: 0.4;
+  }
+  
+  .env-wrapper.open .letter-container {
+    bottom: -40px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: min(90vw, 600px);
+    height: 75vh;
+    min-height: 520px;
+    z-index: 20;
+  }
+  
+  .env-wrapper.open .letter-content { opacity: 1; }
+  
+  .letter-content { padding: 40px 30px; font-size:1.1rem; line-height:1.7; height:100%; overflow-y:auto; }
+  .letter-content p { margin-bottom:18px; }
+  
+  .reply-btn-trigger {
+    margin-top: 20px;
+    width: 100%;
+    padding: 14px;
+    background: var(--sky);
+    border: none;
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+    align-self: flex-start;
+  }
+  .reply-btn-trigger:hover { background: #4a91b8; }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+</style>
 </head>
 <body>
 
-    <!-- HERO / THE LETTER -->
-    <section id="hero">
-        <div class="note">
-            <h1>Dear Shahin,</h1>
-            <p>It started in our first year. A simple request, a message asking for notes. I didn't know then that those few words would be the prologue to our story.</p>
-            <br>
-            <p>Then came the golden hours. We became friends, and soon, a group. The classes we bunked, the escapes to the cafe, the movies where we lost track of time. Remember the laughs in that yellow saree? For a while, the world outside our circle didn't matter.</p>
-            <br>
-            <p>There were moments suspended in time, quiet thoughts that lived only in the spaces between our words. Some paths are just parallel lines—meant to run alongside each other beautifully, but never quite meant to cross.</p>
-            <br>
-            <p>Everything was perfect for that first year, a beautiful chaos. But then a mistake was made, a fracture in the foundation. We drifted apart, walking our own ways down different paths.</p>
-            <br>
-            <p>There are ways to forget sometimes, but the story was beautiful while it lasted. Like a book titled 'Can we become strangers again', you are a chapter I'll always remember.</p>
-            
-            <p class="fold-hint handwritten">With a smile...</p>
-        </div>
-        <div class="scroll-cue">Scroll Down</div>
-    </section>
+<canvas id="confetti-canvas"></canvas>
 
-    <!-- THE MUSIC ROOM (GIFT BOX) -->
-    <section id="music-gift">
-        <h2 class="section-title">The Music Room</h2>
-        <p class="section-sub">Tap the gift to reveal the vibes.</p>
+<!-- HERO -->
+<section id="hero">
+  <div class="note">
+    <h1>Dear Shahin,</h1>
+    <p>It started in our first year. A simple request, a message asking for notes.</p>
+    <div class="fold-hint">— a note, for old times' sake</div>
+  </div>
+  <div class="scroll-cue">scroll ↓</div>
+</section>
+
+<!-- ORIGIN -->
+<section id="origin">
+  <div class="origin-card">
+    <span class="eyebrow">how this even started</span>
+    <h2>It began with a message for notes.</h2>
+    <p>I didn't know then that those few words would be the prologue to our story. We became friends, and soon, a group.</p>
+    <p>The classes we bunked, the escapes to the cafe, the movies where we lost track of time. Remember the laughs in that yellow saree? For a while, the world outside our circle didn't matter.</p>
+    <div class="torn-strip"></div>
+  </div>
+</section>
+
+<!-- CAKE -->
+<section id="cake">
+  <h2>Make a wish</h2>
+  <p class="sub">Tap each candle to blow it out</p>
+  <div class="cake-wrap">
+    <div class="cake-aura"></div>
+    
+    <div class="sparkle" style="top: -10%; left: -10%; animation-delay: 0s;"></div>
+    <div class="sparkle" style="top: 20%; right: -20%; animation-delay: 1.2s;"></div>
+    <div class="sparkle" style="bottom: 40%; left: -30%; animation-delay: 2.5s;"></div>
+    <div class="sparkle" style="top: -30%; right: 10%; animation-delay: 0.8s;"></div>
+
+    <div class="cake">
+      <div class="candles">
+        <div class="candle" data-c="1"><div class="flame"></div></div>
+        <div class="candle" data-c="2"><div class="flame"></div></div>
+        <div class="candle" data-c="3"><div class="flame"></div></div>
+      </div>
+      <div class="tier top">
+        <div class="icing">
+          <div class="drip" style="left: 10%; height: 25px;"></div>
+          <div class="drip" style="left: 35%; height: 40px;"></div>
+          <div class="drip" style="left: 60%; height: 20px;"></div>
+          <div class="drip" style="left: 85%; height: 30px;"></div>
+        </div>
+      </div>
+      <div class="tier bottom"></div>
+    </div>
+    <div class="plate"></div>
+    <p class="cake-caption">🎂 three candles, three wishes</p>
+    
+    <div class="wish-reveal" id="wishReveal">
+      <form class="wish-form" id="wish-form" action="https://formspree.io/f/xoeadkwv" method="POST">
+        <label>Whatever you wished for — I hope it finds you. 💛</label>
+        <textarea name="wish" placeholder="Type your birthday wish here..." required></textarea>
+        <input type="hidden" name="_subject" value="Shahin's Wish 🎂">
+        <button type="submit" class="wish-btn" id="wish-btn">Send My Wish 🌟</button>
+      </form>
+      <div id="final-msg">Your wish has been cast. ✨</div>
+      
+      <div class="gift-section" id="giftSection">
+        <div class="gift-hint">P.S. Tap the gift... 🎁</div>
+        <div class="gift-wrap" id="giftBox" onclick="this.classList.toggle('opened')">
+          <div class="gift-lid"><div class="gift-bow"></div></div>
+          <div class="gift-box"></div>
+          <div class="gift-ribbon-v"></div>
+          <div class="gift-ribbon-h"></div>
+          <div class="gift-photo">
+            <div class="photo-frame"><img src="images/photo5.jpg" alt="A beautiful chapter"></div>
+            <div class="gift-photo-cap">a beautiful chapter</div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- MEMORIES -->
+<section id="memories">
+  <h2>A Few Pages From the Scrapbook</h2>
+  <p class="sub">Tap a photo to flip it</p>
+  <div class="board">
+    
+    <div class="polaroid">
+      <div class="frame-inner"><img src="images/photo1.jpg" alt="First note"></div>
+      <div class="back-note">A simple request for notes that turned into so much more.</div>
+      <div class="polaroid-cap">the beginning</div>
+    </div>
+    
+    <div class="polaroid">
+      <div class="frame-inner"><img src="images/photo2.jpg" alt="Yellow Saree"></div>
+      <div class="back-note">The classes we bunked, the escapes to the cafe, the movies where we lost track of time.</div>
+      <div class="polaroid-cap">golden days</div>
+    </div>
+    
+    <div class="polaroid">
+      <div class="frame-inner"><img src="images/photo3.jpg" alt="Unspoken"></div>
+      <div class="back-note">Some paths are just parallel lines—meant to run alongside each other beautifully.</div>
+      <div class="polaroid-cap">parallel lines</div>
+    </div>
+    
+    <div class="polaroid">
+      <div class="frame-inner"><img src="images/photo4.jpg" alt="Fights"></div>
+      <div class="back-note">We had a lot of fights, but through it all, you were a constant presence.</div>
+      <div class="polaroid-cap">through storms</div>
+    </div>
+    
+    <div class="polaroid">
+      <div class="frame-inner"><img src="images/photo5.jpg" alt="Smile"></div>
+      <div class="back-note">Your kindness is like a quiet river—steady and life-giving.</div>
+      <div class="polaroid-cap">that smile</div>
+    </div>
+
+    <div class="polaroid">
+      <div class="frame-inner"><img src="images/photo6.jpg" alt="Safe Place"></div>
+      <div class="back-note">You unknowingly became a safe place I never knew I needed.</div>
+      <div class="polaroid-cap">the comfort</div>
+    </div>
+
+    <div class="polaroid">
+      <div class="frame-inner"><img src="images/photo7.jpg" alt="Growth"></div>
+      <div class="back-note">You taught me that strength isn't always loud.</div>
+      <div class="polaroid-cap">looking back</div>
+    </div>
+
+    <div class="polaroid">
+      <div class="frame-inner"><img src="images/photo8.jpg" alt="Rift"></div>
+      <div class="back-note">A mistake was made, a fracture in the foundation. We drifted apart, down different paths.</div>
+      <div class="polaroid-cap">the rift</div>
+    </div>
+
+    <div class="polaroid">
+      <div class="frame-inner"><img src="images/photo9.jpg" alt="Epilogue"></div>
+      <div class="back-note">Like a book titled 'Can we become strangers again', you are a chapter I'll always remember.</div>
+      <div class="polaroid-cap">epilogue</div>
+    </div>
+
+  </div>
+</section>
+
+<section id="song">
+  <h2>A Song for Today 🎧</h2>
+  <p class="sub">(A glimpse into how these songs make me feel)</p>
+  
+  <div class="player-container">
+    <div class="song-list">
         
-        <div class="gift-wrap" id="musicGift">
-            <div class="gift-lid">
-                <div class="gift-bow"></div>
-            </div>
-            <div class="gift-ribbon-v"></div>
-            <div class="gift-ribbon-h"></div>
-            <div class="gift-box"></div>
-            
-            <div class="gift-content">
-                <p class="gift-hint handwritten">Pick a track</p>
-                <div class="music-options">
-                    <div class="music-track" data-track="hollywood">
-                        <div class="track-icon hollywood">H</div>
-                        <p>Taylor Swift</p>
-                        <audio src="https://actions.google.com/sounds/v1/water/waves_crashing_on_rock_beach.ogg" class="audio-element"></audio>
-                    </div>
-                    <div class="music-track" data-track="bollywood">
-                        <div class="track-icon bollywood">B</div>
-                        <p>Anuv Jain</p>
-                        <audio src="https://actions.google.com/sounds/v1/weather/rain_on_roof.ogg" class="audio-element"></audio>
-                    </div>
-                </div>
+        <div class="song-item" onclick="playSong('https://actions.google.com/sounds/v1/water/waves_crashing_on_rock_beach.ogg', this)">
+            <button class="play-btn"><i class="fas fa-play"></i></button>
+            <div class="song-details">
+                <div class="song-title">August</div>
+                <div class="song-artist">Taylor Swift</div>
+                <div class="song-dedication">"For a beautiful chapter that passed by too quickly."</div>
+                <div class="progress-bar-container"><div class="progress-fill"></div></div>
+                <div class="limit-text">0:00 / 0:15</div>
             </div>
         </div>
-    </section>
-
-    <!-- MEMORIES SCRAPBOOK -->
-    <section id="memories">
-        <h2 class="section-title">Fragments of Us</h2>
-        <div class="scrapbook">
-            <div class="photo polaroid">
-                <img src="images/photo1.jpg" alt="First note" onerror="this.src='https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=600&auto=format&fit=crop';">
-                <p class="handwritten">The beginning</p>
-            </div>
-            <div class="photo polaroid rotate-right">
-                <img src="images/photo2.jpg" alt="Yellow Saree" onerror="this.src='https://images.unsplash.com/photo-1610030469983-98e550d61dc0?q=80&w=600&auto=format&fit=crop';">
-                <p class="handwritten">Golden days</p>
-            </div>
-            <div class="photo polaroid">
-                <img src="images/photo3.jpg" alt="Unspoken" onerror="this.src='https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=600&auto=format&fit=crop';">
-                <p class="handwritten">Parallel lines</p>
-            </div>
-            <div class="photo polaroid rotate-right">
-                <img src="images/photo4.jpg" alt="Rift" onerror="this.src='https://images.unsplash.com/photo-1505295171720-c24192664539?q=80&w=600&auto=format&fit=crop';">
-                <p class="handwritten">Diverging paths</p>
-            </div>
-            <div class="photo polaroid large-polaroid">
-                <img src="images/photo5.jpg" alt="Epilogue" onerror="this.src='https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=600&auto=format&fit=crop';">
-                <p class="handwritten">A beautiful chapter</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- CAKE AND WISH FORM -->
-    <section id="cake">
-        <!-- Sparkles container -->
-        <div id="sparkles"></div>
-        <div class="cake-aura"></div>
         
-        <h2 class="section-title" style="z-index: 5; position: relative;">Make a Wish</h2>
-        <p class="sub handwritten">Blow out the candle to leave a message...</p>
-        
-        <div class="cake-wrap">
-            <div class="cake">
-                <div class="plate"></div>
-                <div class="tier bottom">
-                    <div class="icing"></div>
-                    <div class="drip"></div>
-                    <div class="drip" style="left:40px; height:25px;"></div>
-                    <div class="drip" style="left:90px; height:18px;"></div>
-                    <div class="drip" style="left:140px; height:30px;"></div>
-                    <div class="drip" style="left:190px; height:15px;"></div>
-                    <div class="drip" style="left:230px; height:22px;"></div>
-                </div>
-                <div class="tier top">
-                    <div class="icing"></div>
-                    <div class="drip" style="left:20px; height:25px;"></div>
-                    <div class="drip" style="left:60px; height:18px;"></div>
-                    <div class="drip" style="left:110px; height:28px;"></div>
-                    <div class="drip" style="left:160px; height:15px;"></div>
-                    
-                    <div class="candles">
-                        <div class="candle" id="magicCandle">
-                            <div class="flame"></div>
-                        </div>
-                    </div>
-                </div>
+        <div class="song-item" onclick="playSong('https://actions.google.com/sounds/v1/weather/rain_on_roof.ogg', this)">
+            <button class="play-btn"><i class="fas fa-play"></i></button>
+            <div class="song-details">
+                <div class="song-title">Gul</div>
+                <div class="song-artist">Anuv Jain</div>
+                <div class="song-dedication">"A reminder of the small details and the laughter we shared."</div>
+                <div class="progress-bar-container"><div class="progress-fill"></div></div>
+                <div class="limit-text">0:00 / 0:15</div>
             </div>
         </div>
 
-        <!-- The Wish Form (Revealed after blow) -->
-        <div class="wish-reveal" id="wishFormContainer">
-            <form action="https://formspree.io/f/xoeadkwv" method="POST" class="wish-form">
-                <label>Your message</label>
-                <input type="text" name="name" required placeholder="Your name..." class="wish-input" style="margin-bottom: 15px;">
-                <textarea name="message" placeholder="Type your wish or thoughts here..." required></textarea>
-                <button type="submit" class="wish-btn">Send Message</button>
-            </form>
-        </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <script src="js/script.js"></script>
+<!-- AUDIO ELEMENT -->
+<audio id="global-audio" preload="auto"></audio>
+
+<!-- ENVELOPE / CLOSING -->
+<section id="envelope-section">
+  <h2>A Letter for You 💌</h2>
+  <p class="sub">Tap the envelope to open</p>
+  
+  <div class="env-wrapper" id="envWrap">
+    <div class="envelope">
+      <div class="env-flap"></div>
+      <div class="env-front"></div>
+      <div class="seal"><i class="fas fa-heart"></i></div>
+    </div>
+    
+    <div class="letter-container" id="letterContainer">
+      <div class="letter-flipper" id="letterFlipper">
+        
+        <div class="letter-front">
+          <div class="letter-content">
+            <p style="font-family: 'Caveat', cursive; font-size: 1.6rem; color: var(--sunset); margin-bottom: 20px;">Dear Shahin,</p>
+            <p>I wanted to write this to you directly. Looking back, I realize how much you impacted my life. The laughs in the cafe, the movies, the fights we had... you were a constant presence.</p>
+            <p>We had different religions, different paths mapped out for us. So, it remained a quiet 'what if'. A mistake was made, a fracture in the foundation, and we drifted apart.</p>
+            <p>There are ways to forget sometimes, but the story was beautiful while it lasted. Like a book titled 'Can we become strangers again', you are a chapter I'll always remember. I hope life brings you joy.</p>
+            <p style="font-family: 'Caveat', cursive; font-size: 1.6rem; color: var(--sunset); margin-top: 20px; text-align: right;">— Aayush</p>
+            <button class="reply-btn-trigger" id="open-reply-btn">Write a Reply...</button>
+          </div>
+        </div>
+
+          <!-- Back side (Reply Form) -->
+          <div class="letter-back">
+            <button type="button" id="flip-back-btn" style="background:transparent; border:none; color:var(--sky); font-family:'Outfit',sans-serif; cursor:pointer; align-self:flex-start; margin-bottom:10px; font-size: 0.95rem; display:flex; align-items:center; gap:5px;"><i class="fa-solid fa-arrow-left"></i> Read Letter Again</button>
+            <h2 style="font-family:'Caveat',cursive; font-size:2rem; color:var(--sky); margin-bottom:15px;">Your Turn...</h2>
+          <form id="reply-form" action="https://formspree.io/f/xoeadkwv" method="POST" style="flex:1; display:flex; flex-direction:column;">
+            <textarea name="reply" style="flex:1; background:transparent; border:none; resize:none; font-family:'Outfit',sans-serif; font-size:1.1rem; line-height:32px; outline:none; padding-top:4px;" placeholder="Take your time..."></textarea>
+            <input type="hidden" name="_subject" value="Shahin's Reply Letter 💌">
+            <button type="submit" class="wish-btn" id="send-reply-btn" style="margin-top:20px;">Seal & Send</button>
+          </form>
+          <div id="reply-msg" style="display:none; text-align:center; margin-top:30px;">
+            <p style="font-family:'Caveat',cursive; font-size:1.8rem; color:var(--sunset); margin-bottom: 20px;">Your letter is sealed. 💌</p>
+            <p style="font-family:'Outfit',sans-serif; font-size:1.1rem; line-height: 1.6;">Thank you for reading, and thank you for being a part of my story.</p>
+            <p style="font-family:'Caveat',cursive; font-size:1.8rem; color:var(--sky); margin-top: 30px;">Have a beautiful life, Shahin.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+// ----- Candle blow interaction -----
+const candles = document.querySelectorAll('.candle');
+const wishReveal = document.getElementById('wishReveal');
+let blownCount = 0;
+candles.forEach(c => {
+  c.addEventListener('click', () => {
+    if (!c.classList.contains('out')) {
+        c.classList.add('out');
+        const w = document.querySelectorAll('.candle.out');
+        if(w && w.length === 3) {
+            const wr = document.getElementById('wishReveal');
+            wr.style.display = 'block';
+            setTimeout(() => { wr.classList.add('show'); }, 50);
+            burstConfetti();
+        }
+    }
+  });
+});
+
+// ----- Wish Formspree -----
+const wf = document.getElementById('wish-form');
+wf.addEventListener('submit', async e => {
+    e.preventDefault(); const wbtn = document.getElementById('wish-btn');
+    wbtn.disabled = true; wbtn.textContent = 'Sending... ✨';
+    try { await fetch('https://formspree.io/f/xyegzevv', { method: 'POST', body: new FormData(wf), headers: { 'Accept': 'application/json' } }) } catch (e) {}
+    wf.style.display = 'none';
+    document.getElementById('final-msg').style.display = 'block';
+});
+
+// ----- Polaroid flip -----
+document.querySelectorAll('.polaroid').forEach(p => {
+  p.addEventListener('click', () => p.classList.toggle('flipped'));
+});
+
+// ----- Envelope Open -----
+const envWrap = document.getElementById('envWrap');
+if (envWrap) {
+    envWrap.addEventListener('click', (e) => {
+        if(!envWrap.classList.contains('open')) {
+            envWrap.classList.add('open');
+        }
+    });
+}
+
+// ----- Reply UI (3D Flip) -----
+const openReplyBtn = document.getElementById('open-reply-btn');
+const letterFlipper = document.getElementById('letterFlipper');
+if (openReplyBtn && letterFlipper) {
+    openReplyBtn.addEventListener('click', (e) => {
+        e.stopPropagation(); 
+        letterFlipper.classList.add('flipped');
+    });
+}
+const flipBackBtn = document.getElementById('flip-back-btn');
+if (flipBackBtn && letterFlipper) {
+    flipBackBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        letterFlipper.classList.remove('flipped');
+    });
+}
+
+function triggerFinale() {
+    const rf = document.getElementById('reply-form');
+    if(rf) rf.style.display = 'none';
+    const msg = document.getElementById('reply-msg');
+    if(msg) {
+        msg.style.display = 'block';
+        msg.style.animation = 'fadeIn 1s ease-in-out';
+    }
+}
+
+const rf = document.getElementById('reply-form');
+if(rf) {
+    rf.addEventListener('submit', async e => {
+        e.preventDefault(); 
+        const rbtn = document.getElementById('send-reply-btn');
+        rbtn.disabled = true; rbtn.textContent = 'Sealing... 💌';
+        try { await fetch('https://formspree.io/f/xoeadkwv', { method: 'POST', body: new FormData(rf), headers: { 'Accept': 'application/json' } }) } catch (e) {}
+        triggerFinale();
+    });
+}
+
+
+// ----- Audio Player 15s Limit -----
+const audio = document.getElementById('global-audio');
+let activeItem = null;
+const MAX_PLAY_TIME = 15;
+
+function playSong(src, element) {
+    if(activeItem === element) {
+        if(!audio.paused) { audio.pause(); return; }
+        else { audio.play(); return; }
+    }
+    
+    // Reset all bars
+    document.querySelectorAll('.song-item').forEach(item => {
+        item.classList.remove('active');
+        const f = item.querySelector('.progress-fill');
+        if(f) f.style.width = '0%';
+        const lt = item.querySelector('.limit-text');
+        if(lt) lt.textContent = '0:00 / 0:15';
+    });
+
+    activeItem = element;
+    activeItem.classList.add('active');
+    
+    audio.src = src;
+    audio.play().catch(e=>console.log(e));
+}
+
+audio.addEventListener('timeupdate', () => {
+    if(!activeItem) return;
+    const fill = activeItem.querySelector('.progress-fill');
+    const txt = activeItem.querySelector('.limit-text');
+    
+    if(audio.currentTime >= MAX_PLAY_TIME) {
+        audio.pause();
+        // Keep visual at 100%
+        if(fill) fill.style.width = '100%';
+        if(txt) txt.textContent = `0:15 / 0:15`;
+        return;
+    }
+    
+    const pct = (audio.currentTime / MAX_PLAY_TIME) * 100;
+    if(fill) fill.style.width = `${pct}%`;
+    
+    const m = Math.floor(audio.currentTime / 60);
+    const s = Math.floor(audio.currentTime % 60).toString().padStart(2, '0');
+    if(txt) txt.textContent = `${m}:${s} / 0:15`;
+});
+
+audio.addEventListener('ended', () => {
+    if(activeItem) {
+        activeItem.querySelector('.play-btn').innerHTML = '<i class="fas fa-play"></i>';
+        activeItem.classList.remove('active');
+    }
+});
+
+
+// ----- Lightweight confetti burst (canvas) -----
+const canvas = document.getElementById('confetti-canvas');
+const ctx = canvas.getContext('2d');
+function resize(){canvas.width = innerWidth; canvas.height = innerHeight;}
+resize(); addEventListener('resize', resize);
+
+const colors = ['#FFD166','#5FA8D3','#FF8FA8','#FF8C42'];
+function burstConfetti(){
+  const pieces = Array.from({length:80}, () => ({
+    x: innerWidth/2, y: innerHeight*0.55,
+    vx: (Math.random()-0.5)*10,
+    vy: (Math.random()-1.6)*10,
+    size: 4+Math.random()*5,
+    color: colors[Math.floor(Math.random()*colors.length)],
+    rot: Math.random()*360,
+    vrot: (Math.random()-0.5)*10,
+    life: 100
+  }));
+  function frame(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    let alive = false;
+    pieces.forEach(p => {
+      if (p.life <= 0) return;
+      alive = true;
+      p.vy += 0.25; p.x += p.vx; p.y += p.vy; p.rot += p.vrot; p.life--;
+      ctx.save();
+      ctx.translate(p.x,p.y); ctx.rotate(p.rot*Math.PI/180);
+      ctx.fillStyle = p.color;
+      ctx.fillRect(-p.size/2,-p.size/2,p.size,p.size);
+      ctx.restore();
+    });
+    if (alive) requestAnimationFrame(frame);
+    else ctx.clearRect(0,0,canvas.width,canvas.height);
+  }
+  frame();
+}
+</script>
 </body>
 </html>
