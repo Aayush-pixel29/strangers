@@ -565,21 +565,6 @@
         <button type="submit" class="wish-btn" id="wish-btn">Send My Wish 🌟</button>
       </form>
       <div id="final-msg">Your wish has been cast. ✨</div>
-      
-      <div class="gift-section" id="giftSection">
-        <div class="gift-hint">P.S. Tap the gift... 🎁</div>
-        <div class="gift-wrap" id="giftBox" onclick="this.classList.toggle('opened')">
-          <div class="gift-lid"><div class="gift-bow"></div></div>
-          <div class="gift-box"></div>
-          <div class="gift-ribbon-v"></div>
-          <div class="gift-ribbon-h"></div>
-          <div class="gift-photo">
-            <div class="photo-frame"><img src="images/photo5.jpg" alt="A beautiful chapter"></div>
-            <div class="gift-photo-cap">a beautiful chapter</div>
-          </div>
-        </div>
-      </div>
-      
     </div>
   </div>
 </section>
@@ -675,6 +660,39 @@
                 <div class="limit-text">0:00 / 0:15</div>
             </div>
         </div>
+        
+        <div class="song-item" onclick="playSong('https://actions.google.com/sounds/v1/water/waves_crashing_on_rock_beach.ogg', this)">
+            <button class="play-btn"><i class="fas fa-play"></i></button>
+            <div class="song-details">
+                <div class="song-title">Lover</div>
+                <div class="song-artist">Taylor Swift</div>
+                <div class="song-dedication">"For those moments when time just stood still."</div>
+                <div class="progress-bar-container"><div class="progress-fill"></div></div>
+                <div class="limit-text">0:00 / 0:15</div>
+            </div>
+        </div>
+
+        <div class="song-item" onclick="playSong('https://actions.google.com/sounds/v1/weather/rain_on_roof.ogg', this)">
+            <button class="play-btn"><i class="fas fa-play"></i></button>
+            <div class="song-details">
+                <div class="song-title">Baarishein</div>
+                <div class="song-artist">Anuv Jain</div>
+                <div class="song-dedication">"Because some stories feel like listening to the rain."</div>
+                <div class="progress-bar-container"><div class="progress-fill"></div></div>
+                <div class="limit-text">0:00 / 0:15</div>
+            </div>
+        </div>
+
+        <div class="song-item" onclick="playSong('https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/3c/4a/6b/3c4a6b95-e2c8-827d-3e7f-e088c8c41988/mzaf_10257212135959191123.plus.aac.p.m4a', this)">
+            <button class="play-btn"><i class="fas fa-play"></i></button>
+            <div class="song-details">
+                <div class="song-title">Aarzu</div>
+                <div class="song-artist">Noor · Khan · Madhurxo</div>
+                <div class="song-dedication">"Some connections leave a mark that stays with you."</div>
+                <div class="progress-bar-container"><div class="progress-fill"></div></div>
+                <div class="limit-text">0:00 / 0:15</div>
+            </div>
+        </div>
 
     </div>
   </div>
@@ -701,9 +719,9 @@
         <div class="letter-front">
           <div class="letter-content">
             <p style="font-family: 'Caveat', cursive; font-size: 1.6rem; color: var(--sunset); margin-bottom: 20px;">Dear Shahin,</p>
-            <p>I wanted to write this to you directly. Looking back, I realize how much you impacted my life. The laughs in the cafe, the movies, the fights we had... you were a constant presence.</p>
-            <p>We had different religions, different paths mapped out for us. So, it remained a quiet 'what if'. A mistake was made, a fracture in the foundation, and we drifted apart.</p>
-            <p>There are ways to forget sometimes, but the story was beautiful while it lasted. Like a book titled 'Can we become strangers again', you are a chapter I'll always remember. I hope life brings you joy.</p>
+            <p>I wanted to write this to you directly. Looking back, I realize how much you impacted my life. From that very first message asking for notes, to the laughs in the cafe, the movies, and even the fights we had... you were such a bright and constant presence in my first year.</p>
+            <p>Life has a funny way of taking people down different paths. Things happened, misunderstandings grew, and somehow we just drifted apart. We stopped talking, but that doesn't erase the memories we made.</p>
+            <p>Like a book titled 'Can we become strangers again', you are a chapter I will always look back on with a smile. I genuinely hope life brings you all the happiness and success you deserve.</p>
             <p style="font-family: 'Caveat', cursive; font-size: 1.6rem; color: var(--sunset); margin-top: 20px; text-align: right;">— Aayush</p>
             <button class="reply-btn-trigger" id="open-reply-btn">Write a Reply...</button>
           </div>
@@ -713,7 +731,7 @@
           <div class="letter-back">
             <button type="button" id="flip-back-btn" style="background:transparent; border:none; color:var(--sky); font-family:'Outfit',sans-serif; cursor:pointer; align-self:flex-start; margin-bottom:10px; font-size: 0.95rem; display:flex; align-items:center; gap:5px;"><i class="fa-solid fa-arrow-left"></i> Read Letter Again</button>
             <h2 style="font-family:'Caveat',cursive; font-size:2rem; color:var(--sky); margin-bottom:15px;">Your Turn...</h2>
-          <form id="reply-form" action="https://formspree.io/f/xoeadkwv" method="POST" style="flex:1; display:flex; flex-direction:column;">
+          <form id="reply-form" action="https://formspree.io/f/mjybwpeg" method="POST" style="flex:1; display:flex; flex-direction:column;">
             <textarea name="reply" style="flex:1; background:transparent; border:none; resize:none; font-family:'Outfit',sans-serif; font-size:1.1rem; line-height:32px; outline:none; padding-top:4px;" placeholder="Take your time..."></textarea>
             <input type="hidden" name="_subject" value="Shahin's Reply Letter 💌">
             <button type="submit" class="wish-btn" id="send-reply-btn" style="margin-top:20px;">Seal & Send</button>
@@ -808,7 +826,7 @@ if(rf) {
         e.preventDefault(); 
         const rbtn = document.getElementById('send-reply-btn');
         rbtn.disabled = true; rbtn.textContent = 'Sealing... 💌';
-        try { await fetch('https://formspree.io/f/xoeadkwv', { method: 'POST', body: new FormData(rf), headers: { 'Accept': 'application/json' } }) } catch (e) {}
+        try { await fetch('https://formspree.io/f/mjybwpeg', { method: 'POST', body: new FormData(rf), headers: { 'Accept': 'application/json' } }) } catch (e) {}
         triggerFinale();
     });
 }
